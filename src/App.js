@@ -4,22 +4,38 @@ import { observer } from 'mobx-react'
 @observer
 class App extends Component {
   render() {
+    const store = this.props.store
     return (
-      <div className="App">
-        <header className="App-header">
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div>
+        { store.report }
+        <ul>
+          {store.todos.map(
+            () => <TodoView todo={ todo } key={ idx } />
+          )}
+        </ul>
       </div>
+    )
+  }
+}
+
+@observer
+class TodoView extends Component {
+  render() {
+    const todo = this.props.todo;
+    return (
+      <li onDoubleClick={ this.onRename }>
+        <input
+          type='checkbox'
+          checked={ todo.completed }
+          onChange={ this.onToggleCompleted }
+        />
+        { todo.task }
+        { todo.assignee
+          ? <small>{ todo.assignee.name }</small>
+          : null
+        }
+        <RenderCounter />
+      </li>
     )
   }
 }
