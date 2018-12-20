@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { observer } from 'mobx-react'
 
+// Make your React components truly reactive
 @observer
 class App extends Component {
   render() {
@@ -10,7 +11,7 @@ class App extends Component {
         { store.report }
         <ul>
           {store.todos.map(
-            () => <TodoView todo={ todo } key={ idx } />
+            (todo, index) => <TodoView todo={ todo } key={ index } />
           )}
         </ul>
       </div>
@@ -34,9 +35,19 @@ class TodoView extends Component {
           ? <small>{ todo.assignee.name }</small>
           : null
         }
-        <RenderCounter />
+        {/*<RenderCounter />*/}
       </li>
     )
+  }
+
+  onToggleCompleted = () => {
+    const todo = this.props.todo
+    todo.completed = !todo.completed
+  }
+
+  onRename = () => {
+    const todo = this.props.todo
+    todo.task = prompt('Take name', todo.task) || todo.task
   }
 }
 
