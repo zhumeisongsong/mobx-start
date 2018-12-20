@@ -14,8 +14,15 @@ class App extends Component {
             (todo, index) => <TodoView todo={ todo } key={ index } />
           )}
         </ul>
+        { store.pendingRequests > 0 ? <marqee>Loading </marqee> : null}
+        <button onClick={ this.onNewTodo }>New Todo</button>
+        <small>(double-click a todo to edit)</small>
       </div>
     )
+  }
+
+  onNewTodo = () => {
+    this.props.store.addTodo(prompt('Enter a new todo:', 'coffee piz'))
   }
 }
 

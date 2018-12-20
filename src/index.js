@@ -33,7 +33,7 @@ class ObservableTodoStore {
     }
   }
 
-  addTodos(task) {
+  addTodo(task) {
     this.todos.push({
       task: task,
       completed: false,
