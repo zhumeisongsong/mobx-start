@@ -5,6 +5,10 @@ import { observable, autorun, computed } from 'mobx'
 import App from './App'
 import * as serviceWorker from './serviceWorker'
 
+const peopleStore = observable([
+  {name: 'me'}
+])
+
 class ObservableTodoStore {
   // Make objects trackable for MobX
   @observable todos = []
@@ -46,14 +50,14 @@ const observableTodosStore = new ObservableTodoStore()
 
 // Action
 observableTodosStore.todos.push({task: 'Find', completed: true})
-setTimeout(() => {
-  observableTodosStore.todos[0].completed = false
-}, 500)
+observableTodosStore.todos[0].assignee = peopleStore[0]
+peopleStore[0].name = 'me me'
 
 ReactDOM.render(
   <App store={ observableTodosStore } />,
   document.getElementById('root')
 )
+
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: http://bit.ly/CRA-PWA

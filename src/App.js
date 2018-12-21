@@ -6,6 +6,7 @@ import { observer } from 'mobx-react'
 class App extends Component {
   render() {
     const store = this.props.store
+
     return (
       <div>
         { store.report }
@@ -38,6 +39,7 @@ class TodoView extends Component {
           onChange={ this.onToggleCompleted }
         />
         { todo.task }
+        {console.log(todo)}
         { todo.assignee
           ? <small>{ todo.assignee.name }</small>
           : null
