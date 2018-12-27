@@ -1,0 +1,38 @@
+import React, { Component } from 'react'
+import { observer } from 'mobx-react'
+
+@observer
+class TodoView extends Component {
+  render() {
+    const todo = this.props.todo;
+    return (
+      <li onDoubleClick={ this.onRename }>
+        <input
+          type='checkbox'
+          checked={ todo.completed }
+          onChange={ this.onToggleCompleted }
+        />
+        { todo.task }
+        {console.log(todo)}
+        { todo.assignee
+          ? <small>{ todo.assignee.name }</small>
+          : null
+        }
+        {/*<RenderCounter />*/}
+      </li>
+    )
+  }
+
+  onToggleCompleted = () => {
+    const todo = this.props.todo
+    todo.completed = !todo.completed
+  }
+
+  onRename = () => {
+    const todo = this.props.todo
+    todo.task = prompt('Take name', todo.task) || todo.task
+  }
+}
+
+export default TodoView
+
