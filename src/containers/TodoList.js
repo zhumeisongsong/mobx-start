@@ -4,7 +4,7 @@ import TodoView from '../components/TodoView'
 
 // Make your React components truly reactive
 @observer
-class App extends Component {
+class TodoList extends Component {
   render() {
     const store = this.props.store
 
@@ -28,4 +28,4 @@ class App extends Component {
   }
 }
 
-export default App
+export default TodoList

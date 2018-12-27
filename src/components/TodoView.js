@@ -18,7 +18,6 @@ class TodoView extends Component {
           ? <small>{ todo.assignee.name }</small>
           : null
         }
-        {/*<RenderCounter />*/}
       </li>
     )
   }
