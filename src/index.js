@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { observable, autorun, computed } from 'mobx'
 
-import App from './App'
+import App from './containers/App'
 import * as serviceWorker from './serviceWorker'
 
 const peopleStore = observable([
@@ -29,7 +29,6 @@ class ObservableTodoStore {
 
   @computed get report() {
     if (this.todos.length === 0) {
-      console.log(this.todos)
       return "<none>"
     } else {
       return `Next todo :"${this.todos[0].task}".
@@ -48,7 +47,7 @@ class ObservableTodoStore {
 
 const observableTodosStore = new ObservableTodoStore()
 
-// Action
+//TODO: move actions to each method
 observableTodosStore.todos.push({task: 'Find', completed: true})
 observableTodosStore.todos[0].assignee = peopleStore[0]
 peopleStore[0].name = 'me me'
