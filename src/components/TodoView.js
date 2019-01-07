@@ -13,7 +13,6 @@ class TodoView extends Component {
           onChange={ this.onToggleCompleted }
         />
         { todo.task }
-        {console.log(todo)}
         { todo.assignee
           ? <small>{ todo.assignee.name }</small>
           : null
