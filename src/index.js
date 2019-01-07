@@ -6,8 +6,8 @@ import * as serviceWorker from './serviceWorker'
 import {peopleStore, observableTodosStore} from './store'
 
 // TODO: move actions to each method
-observableTodosStore.todos[0].assignee = peopleStore[0]
-peopleStore[0].name = 'me me'
+// observableTodosStore.todos[0].assignee = peopleStore[0]
+// peopleStore[0].name = 'me me'
 
 ReactDOM.render(
   <TodoList store={ observableTodosStore } />,
